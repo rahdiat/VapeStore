@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vape Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <header id="main-header" class="header-sticky border-b border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-gray-800" onclick="navigateTo('home-page')">VapeStore</a>
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" id="nav-produk" class="nav-link" onclick="navigateTo('produk-page')">Produk</a>
+                    <a href="#" id="nav-promosi" class="nav-link" onclick="navigateTo('promosi-page')">Promosi</a>
+                    <a href="#" id="nav-update" class="nav-link" onclick="navigateTo('update-page')">Update</a>
+                </nav>
+
+                <div class="hidden md:flex items-center space-x-4">
+                    <button aria-label="Cart" class="text-gray-600 hover:text-black" onclick="navigateTo('keranjang-page')">
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-black focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-white z-40 p-6 md:hidden">
+            <div class="flex justify-end mb-6">
+                <button id="mobile-menu-close-button" class="text-gray-600 hover:text-black">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-4">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-black" onclick="navigateTo('home-page'); closeMobileMenu();">Home</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-black" onclick="navigateTo('produk-page'); closeMobileMenu();">Produk</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-black" onclick="navigateTo('promosi-page'); closeMobileMenu();">Promosi</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-black" onclick="navigateTo('update-page'); closeMobileMenu();">Update</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-black" onclick="navigateTo('keranjang-page'); closeMobileMenu();">Keranjang</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home-page" class="page-content">
+            <div class="hero-section bg-gray-800 text-white flex items-center justify-center" style="background-image: url('https://smartvapefactory.com/_next/image?url=https%3A%2F%2Fadmin.smartvapefactory.com%2Fuploads%2FUser_Friendly_dan_Performa_Tinggi_Memilih_Vape_Terbaik_Sesuai_Kebutuhanmu_0eb80b899f.webp&w=3840&q=75'); background-size: cover; background-position: center;">
+                <div class="text-center p-8 bg-black bg-opacity-50 rounded-lg">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Koleksi Terbaru Telah Tiba!</h1>
+                    <p class="text-lg md:text-xl mb-6">Nikmati sensasi vape terbaik dengan produk pilihan kami.</p>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors duration-300" onclick="navigateTo('produk-page')">
+                        Jelajahi Sekarang
+                    </button>
+                </div>
+            </div>
+
+            <section class="py-12 md:py-16 bg-gray-100">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">Produk Populer</h2>
+                    <div id="popular-products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                        </div>
+                </div>
+            </section>
+
+            <section class="py-12 md:py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">Etalase Terdepan</h2>
+                    <div id="featured-products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                        </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="produk-page" class="page-content hidden py-12 md:py-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-4xl font-bold text-center mb-10 text-gray-800">Semua Produk</h1>
+                
+                <div class="mb-10">
+                    <div class="search-bar-elegant">
+                        <input type="text" id="product-search-input" class="search-input-elegant" placeholder="Cari produk, merek, atau kategori...">
+                        <i class="fas fa-search text-gray-400 text-xl"></i>
+                    </div>
+                </div>
+
+                <div class="mb-8 flex flex-wrap justify-center gap-2">
+                    <button class="filter-button bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg text-sm" onclick="filterProducts('all')">Semua</button>
+                    <button class="filter-button bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg text-sm" onclick="filterProducts('Device')">Device</button>
+                    <button class="filter-button bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg text-sm" onclick="filterProducts('Liquid')">Liquid</button>
+                    <button class="filter-button bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg text-sm" onclick="filterProducts('Atomizer')">Atomizer</button>
+                </div>
+
+                <div id="all-products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                    </div>
+                <div id="no-results-message" class="text-center text-gray-500 py-10 hidden">
+                    <i class="fas fa-box-open text-4xl mb-4"></i>
+                    <p class="text-xl">Oops! Produk tidak ditemukan.</p>
+                    <p>Coba kata kunci lain atau periksa filter Anda.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="promosi-page" class="page-content hidden py-12 md:py-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-4xl font-bold text-center mb-10 text-gray-800">Penawaran Spesial</h1>
+                <div id="promotions-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    </div>
+            </div>
+        </section>
+
+        <section id="update-page" class="page-content hidden py-12 md:py-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl"> <h1 class="text-4xl font-bold text-center mb-10 text-gray-800">Update Terbaru</h1>
+                <div id="updates-container">
+                    </div>
+            </div>
+        </section>
+
+        <section id="keranjang-page" class="page-content hidden py-12 md:py-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                 <h1 class="text-4xl font-bold text-center mb-10 text-gray-800">Keranjang Belanja Anda</h1>
+                <div id="cart-items-container" class="bg-white shadow-md rounded-lg p-6">
+                    <p class="text-gray-600 text-center">Keranjang Anda saat ini kosong.</p>
+                </div>
+                <div class="mt-8 flex flex-col sm:flex-row justify-end items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg transition-colors duration-300" onclick="window.navigateTo('produk-page')">
+                    Lanjut Belanja
+                    </button>
+                    <button class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg text-lg transition-colors duration-300" onclick="window.sendWhatsAppOrder()">
+                    Checkout via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 py-4 mt-15">
+        <div class="container mx-auto px-2 sm:px-3 lg:px-4 text-center">
+            <div class="mb-4">
+                <a href="#" class="text-gray-400 hover:text-white px-3">Tentang Kami</a>
+                <a href="#" class="text-gray-400 hover:text-white px-3">Kontak</a>
+                <a href="#" class="text-gray-400 hover:text-white px-3">Kebijakan Privasi</a>
+            </div>
+            <p class="text-sm"><span id="current-year"></span> &copy; Hak Cipta Dilindungi.</p>
+            <p class="text-sm"><span id="current-year"></span>Dibuat oleh rahdiat</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
