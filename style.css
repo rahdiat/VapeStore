@@ -1,0 +1,200 @@
+/* style.css */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f5f7; 
+    color: #1d1d1f; 
+}
+
+.header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: rgba(255, 255, 255, 0.8); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.nav-link {
+    position: relative; 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    padding-top: 0.5rem; 
+    padding-bottom: 0.75rem; 
+    font-size: 0.875rem; 
+    font-weight: 500; 
+    color: #4B5563; 
+    transition: color 0.2s ease-in-out; 
+    text-decoration: none; 
+    display: inline-block; 
+}
+
+.nav-link:hover {
+    color: #000000; 
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0.25rem; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #1d1d1f; 
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after,
+.nav-link.nav-link-active::after { 
+    width: 60%; 
+}
+
+.nav-link.nav-link-active { 
+    color: #1d1d1f; 
+    font-weight: 600; 
+}
+
+.hero-section {
+    height: 60vh; 
+    min-height: 400px;
+}
+
+.product-card {
+    background-color: #ffffff;
+    border-radius: 0.75rem; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+    overflow: hidden;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+.product-card:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); 
+    transform: translateY(-0.25rem); 
+}
+
+.product-card img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.search-bar-elegant {
+    width: 100%;
+    max-width: 42rem; 
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    border-radius: 0.5rem; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    padding-top: 0.75rem; 
+    padding-bottom: 0.75rem; 
+    display: flex;
+    align-items: center;
+}
+
+.search-input-elegant {
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+    color: #4B5563; 
+    font-size: 1.125rem; 
+}
+
+.search-input-elegant::placeholder {
+    color: #9CA3AF; 
+}
+
+.search-input-elegant:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: none; 
+}
+
+.promo-card-insta {
+    background-color: #ffffff;
+    border-radius: 0.5rem; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+    overflow: hidden;
+}
+
+.promo-card-insta img {
+    aspect-ratio: 1 / 1; 
+    object-fit: cover;
+}
+
+.update-card-twitter {
+    background-color: #ffffff;
+    padding: 1rem; 
+    border-radius: 0.5rem; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+    margin-bottom: 1rem; 
+    border: 1px solid #E5E7EB; 
+}
+
+.mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; 
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+.filter-button {
+    background-color: #E5E7EB; 
+    color: #374151; 
+    font-weight: 500; 
+    padding-top: 0.5rem; 
+    padding-bottom: 0.5rem; 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+    border-radius: 0.5rem; 
+    font-size: 0.875rem; 
+    transition-property: background-color, color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    cursor: pointer;
+}
+
+.filter-button:hover {
+    background-color: #D1D5DB; 
+}
+
+.filter-button.active { 
+    /* Kelas 'active' akan ditambahkan/dihapus oleh JavaScript.
+       Gaya Tailwind untuk tombol aktif (bg-blue-600 text-white) 
+       akan ditambahkan langsung di JS untuk presisi.
+       Namun, Anda bisa juga mendefinisikannya di sini jika mau.
+    */
+    background-color: #2563EB; /* bg-blue-600 */
+    color: #ffffff; /* text-white */
+}
+
+.page-content.hidden {
+    display: none;
+}
