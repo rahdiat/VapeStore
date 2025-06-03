@@ -14,8 +14,11 @@
     <header id="main-header" class="header-sticky border-b border-gray-200">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0">
-                    <a href="#" class="text-2xl font-bold text-gray-800" onclick="navigateTo('home-page')">VapeStore</a>
+                
+                <div class="flex-1 flex justify-start">
+                    <div class="flex-shrink-0">
+                        <a href="#" class="text-2xl font-bold text-gray-800" onclick="navigateTo('home-page')">VapeStore</a>
+                    </div>
                 </div>
 
                 <nav class="hidden md:flex space-x-8">
@@ -24,47 +27,82 @@
                     <a href="#" id="nav-update" class="nav-link" onclick="navigateTo('update-page')">Update</a>
                 </nav>
 
-                <div class="hidden md:flex items-center space-x-4">
-                    <button aria-label="Cart" class="text-gray-600 hover:text-black" onclick="navigateTo('keranjang-page')">
-                        <i class="fas fa-shopping-cart"></i>
-                    </button>
+                <div class="flex-1 flex justify-end items-center">
+                    <div class="hidden md:flex items-center space-x-4">
+                        <button aria-label="Cart" class="text-gray-600 hover:text-black" onclick="navigateTo('keranjang-page')">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                        </div>
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-button" class="text-gray-600 hover:text-black focus:outline-white">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-600 hover:text-black focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
             </div>
         </div>
 
-        <div id="mobile-menu" class="mobile-menu fixed inset-0 bg-white z-40 p-6 md:hidden">
-            <div class="flex justify-end mb-6">
-                <button id="mobile-menu-close-button" class="text-gray-600 hover:text-black">
+        <div id="mobile-menu"
+             class="fixed top-0 left-0 h-full w-3/4 max-w-xs sm:max-w-sm bg-white z-50 p-6
+                    transform transition-transform duration-300 ease-in-out -translate-x-full shadow-2xl
+                    flex flex-col md:hidden"> {/* Ditambahkan md:hidden agar pasti tersembunyi di desktop */}
+
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-xl font-semibold text-gray-800">Menu</span>
+                <button id="mobile-menu-close-button" class="text-gray-600 hover:text-gray-900 transition-colors">
                     <i class="fas fa-times text-2xl"></i>
                 </button>
             </div>
-            <nav class="flex flex-col space-y-4">
-                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-black" onclick="navigateTo('home-page'); closeMobileMenu();">Home</a>
-                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-black" onclick="navigateTo('produk-page'); closeMobileMenu();">Produk</a>
-                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-black" onclick="navigateTo('promosi-page'); closeMobileMenu();">Promosi</a>
-                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-black" onclick="navigateTo('update-page'); closeMobileMenu();">Update</a>
-                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 hover:text-black" onclick="navigateTo('keranjang-page'); closeMobileMenu();">Keranjang</a>
+
+            <nav class="flex flex-col space-y-3 flex-grow">
+                <a href="#" class="group flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-500 hover:text-white transition-all duration-200" onclick="navigateTo('home-page'); closeMobileMenu();">
+                    <i class="fas fa-home w-7 text-center mr-3 text-blue-500 group-hover:text-white transition-colors duration-200"></i>
+                    <span class="text-base font-medium">Home</span>
+                </a>
+                <a href="#" class="group flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-500 hover:text-white transition-all duration-200" onclick="navigateTo('produk-page'); closeMobileMenu();">
+                    <i class="fas fa-store w-7 text-center mr-3 text-blue-500 group-hover:text-white transition-colors duration-200"></i>
+                    <span class="text-base font-medium">Produk</span>
+                </a>
+                <a href="#" class="group flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-500 hover:text-white transition-all duration-200" onclick="navigateTo('promosi-page'); closeMobileMenu();">
+                    <i class="fas fa-tags w-7 text-center mr-3 text-blue-500 group-hover:text-white transition-colors duration-200"></i>
+                    <span class="text-base font-medium">Promosi</span>
+                </a>
+                <a href="#" class="group flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-500 hover:text-white transition-all duration-200" onclick="navigateTo('update-page'); closeMobileMenu();">
+                    <i class="fas fa-bell w-7 text-center mr-3 text-blue-500 group-hover:text-white transition-colors duration-200"></i>
+                    <span class="text-base font-medium">Update</span>
+                </a>
+                <a href="#" class="group flex items-center px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-500 hover:text-white transition-all duration-200" onclick="navigateTo('keranjang-page'); closeMobileMenu();">
+                    <i class="fas fa-shopping-cart w-7 text-center mr-3 text-blue-500 group-hover:text-white transition-colors duration-200"></i>
+                    <span class="text-base font-medium">Keranjang</span>
+                </a>
             </nav>
+
+            <div class="mt-auto pt-6 border-t border-gray-200">
+                <p class="text-xs text-gray-500 text-center">VapeStore &copy; <span id="mobile-menu-year">Tahun</span></p>
+            </div>
         </div>
-    </header>
+        <div id="mobile-menu-overlay"
+            class="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 ease-in-out opacity-0 hidden md:hidden"
+            onclick="closeMobileMenu()">
+    </div>
+        </header>
 
     <main>
+        
         <section id="home-page" class="page-content">
-            <div class="hero-section bg-gray-800 text-white flex items-center justify-center" style="background-image: url('https://images.pond5.com/lots-vapes-and-electronic-cigarettes-footage-260265352_iconl.jpeg'); background-size: cover; background-position: center;">
-                <div class="text-center p-8 bg-black bg-opacity-50 rounded-lg">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Koleksi Terbaru Telah Tiba!</h1>
-                    <p class="text-lg md:text-xl mb-6">Nikmati sensasi vape terbaik dengan produk pilihan kami.</p>
-                    <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-colors duration-300" onclick="navigateTo('produk-page')">
-                        Jelajahi Sekarang
-                    </button>
-                </div>
-            </div>
+        <div class="hero-section bg-gray-800 text-white flex items-center justify-center" 
+         style="background-image: url('https://images.pond5.com/lots-vapes-and-electronic-cigarettes-footage-260265352_iconl.jpeg'); background-size: cover; background-position: center; min-height: 50vh;"> 
+         <div class="text-center p-8 bg-black bg-opacity-40 rounded-lg">
+            <h1 class="text-4xl md:text-5xl font-bold mb-5 hero-text-animate">Koleksi Terbaru Telah Tiba!</h1>
+            <p class="text-lg md:text-xl mb-6 hero-text-animate" style="animation-delay: 0.2s;">Nikmati sensasi vape terbaik dengan produk pilihan kami.</p>
+            <button class="bg-blue-500 hover:bg-blue-800 text-green font-semibold py-3 px-8 rounded-lg text-lg transition-colors duration-300 hero-button-animate" 
+                    onclick="navigateTo('produk-page')">
+                Jelajahi Sekarang
+            </button>
+        </div>
+        </div>
+    
 
             <section class="py-12 md:py-16 bg-gray-100">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,6 +121,20 @@
             </section>
         </section>
 
+
+        <section id="detail-produk-page" class="page-content hidden py-12 md:py-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="product-detail-content" class="bg-white shadow-xl rounded-lg overflow-hidden">
+                    <p class="p-8 text-center text-gray-500">Memuat detail produk...</p>
+                </div>
+            <div class="mt-8 text-center">
+                <button onclick="window.navigateTo('produk-page')" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-300">
+                    <i class="fas fa-arrow-left mr-2"></i>Kembali ke Produk
+                </button>
+            </div>
+            </div>
+        </section>
+
         <section id="produk-page" class="page-content hidden py-12 md:py-16">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 class="text-4xl font-bold text-center mb-10 text-gray-800">Semua Produk</h1>
@@ -94,11 +146,12 @@
                     </div>
                 </div>
 
-                <div class="mb-8 flex flex-wrap justify-center gap-2">
+                <div id="filter-buttons-container" class="mb-8 flex flex-wrap justify-center gap-2">
                     <button class="filter-button bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg text-sm" onclick="filterProducts('all')">Semua</button>
                     <button class="filter-button bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg text-sm" onclick="filterProducts('Device')">Device</button>
                     <button class="filter-button bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg text-sm" onclick="filterProducts('Liquid')">Liquid</button>
                     <button class="filter-button bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg text-sm" onclick="filterProducts('Atomizer')">Atomizer</button>
+                    <button class="filter-button bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg text-sm" onclick="filterProducts('Aksesoris')">Aksesoris</button>
                 </div>
 
                 <div id="all-products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
@@ -121,7 +174,7 @@
 
         <section id="update-page" class="page-content hidden py-12 md:py-16">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl"> <h1 class="text-4xl font-bold text-center mb-10 text-gray-800">Update Terbaru</h1>
-                <div id="updates-container">
+                <div id="updates-container" class="space-y-4">
                     </div>
             </div>
         </section>
@@ -129,14 +182,15 @@
         <section id="keranjang-page" class="page-content hidden py-12 md:py-16">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                  <h1 class="text-4xl font-bold text-center mb-10 text-gray-800">Keranjang Belanja Anda</h1>
-                <div id="cart-items-container" class="bg-white shadow-md rounded-lg p-6">
-                    <p class="text-gray-600 text-center">Keranjang Anda saat ini kosong.</p>
+                <div id="cart-items-container" class="bg-white shadow-md rounded-lg p-6 mb-8">
+                    </div>
+                <div id="cart-summary-container">
                 </div>
                 <div class="mt-8 flex flex-col sm:flex-row justify-end items-center space-y-4 sm:space-y-0 sm:space-x-4">
                     <button class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-lg transition-colors duration-300" onclick="window.navigateTo('produk-page')">
                     Lanjut Belanja
                     </button>
-                    <button class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg text-lg transition-colors duration-300" onclick="window.sendWhatsAppOrder()">
+                    <button id="checkout-wa-button" class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg text-lg transition-colors duration-300" onclick="window.sendWhatsAppOrder()">
                     Checkout via WhatsApp
                     </button>
                 </div>
@@ -145,15 +199,14 @@
 
     </main>
 
-    <footer class="bg-gray-800 text-gray-300 py-4 mt-15">
+    <footer class="bg-gray-800 text-gray-300 py-4 mt-16">
         <div class="container mx-auto px-2 sm:px-3 lg:px-4 text-center">
             <div class="mb-4">
                 <a href="#" class="text-gray-400 hover:text-white px-3">Tentang Kami</a>
                 <a href="#" class="text-gray-400 hover:text-white px-3">Kontak</a>
                 <a href="#" class="text-gray-400 hover:text-white px-3">Kebijakan Privasi</a>
             </div>
-            <p class="text-sm"><span id="current-year"></span> &copy; Hak Cipta Dilindungi.</p>
-            <p class="text-sm"><span id="current-year"></span>Dibuat oleh rahdiat</p>
+            <p class="text-sm">&copy; <span id="current-year"></span> VapeStore. Dibuat oleh rahdiat.</p>
         </div>
     </footer>
 
