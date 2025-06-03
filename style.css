@@ -3,12 +3,24 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: #f5f5f7; 
     color: #1d1d1f; 
+    display: flex; /* Untuk sticky footer */
+    flex-direction: column; /* Untuk sticky footer */
+    min-height: 100vh; /* Minimal setinggi viewport - Untuk sticky footer */
+}
+
+main {
+  flex-grow: 1; /* Memungkinkan <main> untuk tumbuh - Untuk sticky footer */
+}
+
+footer {
+  flex-shrink: 0; /* Mencegah footer menyusut - Untuk sticky footer */
+  /* class `mt-16` pada footer di HTML Anda sudah benar (Tailwind) */
 }
 
 .header-sticky {
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 50; /* Pastikan ini cukup tinggi, menu mobile dan overlay punya z-50 & z-40 */
     background-color: rgba(255, 255, 255, 0.8); 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -55,8 +67,13 @@ body {
 }
 
 .hero-section {
-    height: 60vh; 
-    min-height: 400px;
+    /* background-image: url(''); -> Dikelola oleh inline style di HTML */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* height: 4vh; -> Dikelola oleh min-height: 50vh; di inline style HTML */
+    /* min-height: 100px; -> Dikelola oleh min-height: 50vh; di inline style HTML */
 }
 
 .product-card {
@@ -134,7 +151,8 @@ body {
     border: 1px solid #E5E7EB; 
 }
 
-.mobile-menu {
+/* Menghapus CSS .mobile-menu lama karena sekarang dikontrol oleh Tailwind dan JS */
+/* .mobile-menu {
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     position: fixed;
@@ -147,6 +165,7 @@ body {
 .mobile-menu.open {
     transform: translateX(0);
 }
+*/
 
 ::-webkit-scrollbar {
     width: 8px;
@@ -166,8 +185,10 @@ body {
 }
 
 .filter-button {
-    background-color: #E5E7EB; 
-    color: #374151; 
+    /* Gaya dasar sudah baik dari Tailwind, bisa dikosongkan jika semua dari Tailwind */
+    /* Contoh: jika ingin mempertahankan beberapa gaya dasar dari CSS */
+    /* background-color: #E5E7EB;  -> Sudah ada di HTML via Tailwind (default) */
+    /* color: #374151; -> Sudah ada di HTML via Tailwind (default) */
     font-weight: 500; 
     padding-top: 0.5rem; 
     padding-bottom: 0.5rem; 
@@ -179,22 +200,25 @@ body {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
     cursor: pointer;
+    border: 1px solid transparent; /* Menambahkan border transparan agar ukuran tidak berubah saat hover/active jika ada border */
 }
 
 .filter-button:hover {
-    background-color: #D1D5DB; 
+    background-color: #D1D5DB; /* Tailwind: hover:bg-gray-300 */
 }
 
 .filter-button.active { 
-    /* Kelas 'active' akan ditambahkan/dihapus oleh JavaScript.
-       Gaya Tailwind untuk tombol aktif (bg-blue-600 text-white) 
-       akan ditambahkan langsung di JS untuk presisi.
-       Namun, Anda bisa juga mendefinisikannya di sini jika mau.
+    /* JavaScript akan menambahkan kelas Tailwind 'bg-blue-600 text-white'.
+       Jika Anda ingin override atau menambahkan gaya spesifik dari CSS, letakkan di sini.
+       Misalnya, jika kelas Tailwind tidak cukup:
     */
-    background-color: #2563EB; /* bg-blue-600 */
-    color: #ffffff; /* text-white */
+    /* background-color: #2563EB !important; /* Contoh override */
+    /* color: #ffffff !important; */
+    font-weight: 600; /* Contoh tambahan gaya */
 }
 
 .page-content.hidden {
     display: none;
 }
+
+/* Tidak ada kurung kurawal penutup yang hilang lagi di sini */
